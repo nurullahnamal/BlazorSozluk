@@ -13,6 +13,10 @@ namespace BlazorSozluk.Api.Infrastructure.Persistence.Context
     {
         public const string DEFAULT_SCHEMA = "dbo";
 
+        public BlazorSozlukContext()
+        {
+            
+        }
         public BlazorSozlukContext(DbContextOptions options) : base(options)
         {
         }
@@ -31,6 +35,19 @@ namespace BlazorSozluk.Api.Infrastructure.Persistence.Context
 
 
         public DbSet<EmailConfirmation> EmailConfirmations { get; set; }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                var connStr = @"server=DESKTOP-CHMVP03\SQLEXPRESS;database=blazorsozluk;integrated security=true;";
+                optionsBuilder.UseSqlServer(connStr, opt =>
+                {
+                    opt.EnableRetryOnFailure();
+                });
+            }
+        }
+        
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
