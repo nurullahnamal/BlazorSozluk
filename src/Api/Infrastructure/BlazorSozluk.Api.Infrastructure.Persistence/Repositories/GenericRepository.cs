@@ -13,13 +13,13 @@ namespace BlazorSozluk.Api.Infrastructure.Persistence.Repositories
 {
     public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : BaseEntity
     {
-        private readonly BlazorSozlukContext dbContext;
+        private readonly DbContext dbContext;
         protected DbSet<TEntity> entity => dbContext.Set<TEntity>();
 
 
-        public GenericRepository(BlazorSozlukContext dbContext)
+        public GenericRepository(DbContext dbContext)
         {
-            this.dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
+            this.dbContext=dbContext ?? throw new ArgumentNullException(nameof(dbContext));
         }
 
         public virtual async Task<int> AddAsync(TEntity entity)
@@ -59,7 +59,7 @@ namespace BlazorSozluk.Api.Infrastructure.Persistence.Repositories
             return await dbContext.SaveChangesAsync();
         }
 
-        public int Update(TEntity entity)
+        public virtual int Update(TEntity entity)
         {
             this.entity.Attach(entity);
             dbContext.Entry(entity).State = EntityState.Modified;
@@ -101,15 +101,15 @@ namespace BlazorSozluk.Api.Infrastructure.Persistence.Repositories
             return Delete(entity);
         }
 
-        public bool DeleteRange(Expression<Func<TEntity, bool>> predicate)
+        public virtual bool DeleteRange(Expression<Func<TEntity, bool>> predicate)
         {
-            dbContext.RemoveRange(predicate);
+            dbContext.RemoveRange(entity.Where(predicate));
             return dbContext.SaveChanges() > 0;
         }
 
         public virtual async Task<bool> DeleteRangeAsync(Expression<Func<TEntity, bool>> predicate)
         {
-            dbContext.RemoveRange(predicate);
+            dbContext.RemoveRange(entity.Where(predicate));
             return await dbContext.SaveChangesAsync() > 0;
         }
 
@@ -198,9 +198,9 @@ namespace BlazorSozluk.Api.Infrastructure.Persistence.Repositories
             return await query.SingleOrDefaultAsync();
         }
 
-        public Task<TEntity> FirstOrDefaultAsync(Expression<Func<TEntity, bool>> predicate, bool noTracking = true, params Expression<Func<TEntity, object>>[] includes)
+        public virtual Task<TEntity> FirstOrDefaultAsync(Expression<Func<TEntity, bool>> predicate, bool noTracking = true, params Expression<Func<TEntity, object>>[] includes)
         {
-            throw new NotImplementedException();
+            return Get(predicate, noTracking, includes).FirstOrDefaultAsync();
         }
 
         public virtual IQueryable<TEntity> Get(Expression<Func<TEntity, bool>> predicate, bool noTracking = true, params Expression<Func<TEntity, object>>[] includes)
