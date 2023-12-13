@@ -33,7 +33,7 @@ namespace BlazorSozluk.Api.Application.Features.Commands.User.ChangePassword
             var encPass = PasswordEncryptor.Encrpt(request.OldPassword);
             if (dbuser.Password != request.OldPassword)
                 throw new DatabaseValidationException("Old password wrong");
-            dbuser.Password = encPass;
+            dbuser.Password = PasswordEncryptor.Encrpt(request.NewPassword);
             await userRepository.UpdateAsync(dbuser);
             return true;
         }
