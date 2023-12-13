@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -6,7 +7,6 @@ using System.Text;
 using System.Threading.Tasks;
 using FluentValidation;
 using MediatR;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace BlazorSozluk.Api.Application.Extensions
 {
@@ -19,6 +19,7 @@ namespace BlazorSozluk.Api.Application.Extensions
             services.AddMediatR(assm);
             services.AddAutoMapper(assm);
             services.AddValidatorsFromAssembly(assm);
+
             return services;
         }
     }

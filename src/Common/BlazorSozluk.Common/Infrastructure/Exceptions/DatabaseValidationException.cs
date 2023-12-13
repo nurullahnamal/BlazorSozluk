@@ -9,7 +9,6 @@ namespace BlazorSozluk.Common.Infrastructure.Exceptions
 {
     public class DatabaseValidationException : Exception
     {
-     
         public DatabaseValidationException()
         {
         }
