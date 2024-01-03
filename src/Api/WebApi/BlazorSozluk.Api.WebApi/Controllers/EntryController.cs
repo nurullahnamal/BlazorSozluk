@@ -77,6 +77,7 @@ namespace BlazorSozluk.Api.WebApi.Controllers
         {
            if (!command.CreatedById.HasValue)
                 command.CreatedById = UserId;
+
             var result = await mediator.Send(command);
             return Ok(result);
         }
