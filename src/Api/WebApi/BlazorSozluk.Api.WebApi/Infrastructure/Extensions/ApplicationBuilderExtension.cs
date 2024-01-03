@@ -1,6 +1,6 @@
 ﻿using System.Net;
-using BlazorSozluk.Api.WebApi.Infrastructure.Results;
 using BlazorSozluk.Common.Infrastructure.Exceptions;
+using BlazorSozluk.Common.Infrastructure.Results;
 using Microsoft.AspNetCore.Diagnostics;
 
 namespace BlazorSozluk.Api.WebApi.Infrastructure.Extensions
