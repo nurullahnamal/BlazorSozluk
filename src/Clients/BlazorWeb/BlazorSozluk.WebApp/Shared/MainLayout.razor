@@ -4,7 +4,7 @@
 
     <div class="logo">
         <a href="/" class="bg-white">
-            <img height="29" width="30" src="css/cu_sivas.png" />
+            <img height="29" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Ek%C5%9Fi_S%C3%B6zl%C3%BCk_yeni_logo.svg/2560px-Ek%C5%9Fi_S%C3%B6zl%C3%BCk_yeni_logo.svg.png" />
         </a>
     </div>
 
@@ -44,24 +44,24 @@
         }
 
     </div>
-    @*// TODO Enable this after auth is enabled*@
-    @* <AuthorizeView>
-    <Authorized>
-    <div class="top-nav">
-    <input type="button" class="form-control btn-success btn-sozluk w-auto" value="Create Entry" @onclick="@NavigateCreateEntryPage" />
-    <input type="button" class="form-control btn-success btn-sozluk w-auto" value="ME" @onclick="@NavigateMEPage" />
-    <input type="button" class="form-control btn-success btn-sozluk w-auto" value="Logout" @onclick="@NavigateLogoutPage" />
-    </div>
 
-    </Authorized>*@
+    <AuthorizeView>
+        <Authorized>
+            <div class="top-nav">
+                <input type="button" class="form-control btn-success btn-sozluk w-auto" value="Create Entry" @onclick="@NavigateCreateEntryPage" />
+                <input type="button" class="form-control btn-success btn-sozluk w-auto" value="ME" @onclick="@NavigateMEPage" />
+                <input type="button" class="form-control btn-success btn-sozluk w-auto" value="Logout" @onclick="@NavigateLogoutPage" />
+            </div>
 
-    @*<NotAuthorized>*@
-    <div class="top-nav">
-        <input type="button" class="form-control btn-success btn-sozluk w-auto" value="Login" @onclick="@NavigateLoginPage" />
-    </div>
-    @*</NotAuthorized>*@
+        </Authorized>
 
-    @*</AuthorizeView>*@
+        <NotAuthorized>
+            <div class="top-nav">
+                <input type="button" class="form-control btn-success btn-sozluk w-auto" value="Login" @onclick="@NavigateLoginPage" />
+            </div>
+        </NotAuthorized>
+
+    </AuthorizeView>
 
     <div class="sub-nav">
         <a class="sub-nav-item active">bugün</a>
