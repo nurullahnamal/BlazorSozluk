@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace BlazorSozluk.Common.Models.Page
 {
-    public class PagedViewModal<T> where T : class
+    public class PagedViewModel<T> where T : class
     {
-        public PagedViewModal() : this(new List<T>(),new Page())
+        public PagedViewModel() : this(new List<T>(),new Page())
         {
 
         }
-        public PagedViewModal(IList<T> results, Page pageInfo)
+        public PagedViewModel(IList<T> results, Page pageInfo)
         {
             Results = results;
             PageInfo = pageInfo;

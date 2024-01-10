@@ -9,7 +9,7 @@ using MediatR;
 
 namespace BlazorSozluk.Api.Application.Features.Queries.GetEntryComments
 {
-    public class GetEntryCommentsQuery:BasePagedQuery,IRequest<PagedViewModal<GetEntryCommentsViewModel>>
+    public class GetEntryCommentsQuery:BasePagedQuery,IRequest<PagedViewModel<GetEntryCommentsViewModel>>
     {
 
         public GetEntryCommentsQuery(Guid entryId, Guid? userId,int page, int pageSize) : base(page, pageSize)

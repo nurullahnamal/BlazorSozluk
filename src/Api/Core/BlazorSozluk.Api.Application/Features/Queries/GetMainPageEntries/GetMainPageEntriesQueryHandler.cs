@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BlazorSozluk.Api.Application.Features.Queries.GetMainPageEntries;
 
-public class GetMainPageEntriesQueryHandler : IRequestHandler<GetMainPageEntriesQuery, PagedViewModal<GetEntryDetailViewModel>>
+public class GetMainPageEntriesQueryHandler : IRequestHandler<GetMainPageEntriesQuery, PagedViewModel<GetEntryDetailViewModel>>
 {
 
     private readonly IEntryRepository entryRepository;
@@ -18,7 +18,7 @@ public class GetMainPageEntriesQueryHandler : IRequestHandler<GetMainPageEntries
         this.entryRepository = entryRepository;
 
     }
-    public async Task<PagedViewModal<GetEntryDetailViewModel>> Handle(GetMainPageEntriesQuery request, CancellationToken cancellationToken)
+    public async Task<PagedViewModel<GetEntryDetailViewModel>> Handle(GetMainPageEntriesQuery request, CancellationToken cancellationToken)
     {
         var query = entryRepository.AsQueryable();
 

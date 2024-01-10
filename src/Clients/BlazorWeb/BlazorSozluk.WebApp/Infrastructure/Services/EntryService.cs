@@ -28,26 +28,26 @@ namespace BlazorSozluk.WebApp.Infrastructure.Services
             return result;
         }
 
-        public async Task<PagedViewModal<GetEntryDetailViewModel>> GetMainPageEntries(int page, int pageSize)
+        public async Task<PagedViewModel<GetEntryDetailViewModel>> GetMainPageEntries(int page, int pageSize)
         {
             var result =
-                await client.GetFromJsonAsync<PagedViewModal<GetEntryDetailViewModel>>(
+                await client.GetFromJsonAsync<PagedViewModel<GetEntryDetailViewModel>>(
                     $"/api/Entry/MainPageEntries?page={page}&pageSize={pageSize}");
             return result;
         }
 
-        public async Task<PagedViewModal<GetEntryDetailViewModel>> GetProfilePageEntries(int page, int pageSize, string userName = null)
+        public async Task<PagedViewModel<GetEntryDetailViewModel>> GetProfilePageEntries(int page, int pageSize, string userName = null)
         {
             var result =
-                await client.GetFromJsonAsync<PagedViewModal<GetEntryDetailViewModel>>(
+                await client.GetFromJsonAsync<PagedViewModel<GetEntryDetailViewModel>>(
                     $"/api/Entry/UserEntries?userName={userName}&page{page}&pageSize={pageSize}");
             return result;
         }
 
-        public async Task<PagedViewModal<GetEntryCommentsViewModel>> GetEntryComments(Guid entryId, int page, int pageSize)
+        public async Task<PagedViewModel<GetEntryCommentsViewModel>> GetEntryComments(Guid entryId, int page, int pageSize)
         {
             var result =
-                await client.GetFromJsonAsync<PagedViewModal<GetEntryCommentsViewModel>>(
+                await client.GetFromJsonAsync<PagedViewModel<GetEntryCommentsViewModel>>(
                     $"/api/Entry/Comments/{entryId}?page={page}&pageSize={pageSize}");
             return result;
         }

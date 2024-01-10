@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BlazorSozluk.Api.Application.Features.Queries.GetEntryComments
 {
-    public class GetEntryCommentsQueryHandler:IRequestHandler<GetEntryCommentsQuery,PagedViewModal<GetEntryCommentsViewModel>>
+    public class GetEntryCommentsQueryHandler:IRequestHandler<GetEntryCommentsQuery,PagedViewModel<GetEntryCommentsViewModel>>
     {
         private readonly IEntryCommentRepository entryCommentRepository;
 
@@ -23,7 +23,7 @@ namespace BlazorSozluk.Api.Application.Features.Queries.GetEntryComments
 
         }
      
-        public async Task<PagedViewModal<GetEntryCommentsViewModel>> Handle(GetEntryCommentsQuery request, CancellationToken cancellationToken)
+        public async Task<PagedViewModel<GetEntryCommentsViewModel>> Handle(GetEntryCommentsQuery request, CancellationToken cancellationToken)
         {
             var query = entryCommentRepository.AsQueryable();
 

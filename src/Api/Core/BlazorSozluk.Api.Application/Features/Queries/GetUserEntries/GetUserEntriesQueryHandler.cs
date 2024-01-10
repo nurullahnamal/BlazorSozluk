@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BlazorSozluk.Api.Application.Features.Queries.GetUserEntries
 {
-    public class GetUserEntriesQueryHandler:IRequestHandler<GetUserEntriesQuery,PagedViewModal<GetUserEntriesDetailViewModel>>
+    public class GetUserEntriesQueryHandler:IRequestHandler<GetUserEntriesQuery,PagedViewModel<GetUserEntriesDetailViewModel>>
     {
         private readonly IEntryRepository entryRepository;
 
@@ -22,7 +22,7 @@ namespace BlazorSozluk.Api.Application.Features.Queries.GetUserEntries
         }
 
 
-        public async Task<PagedViewModal<GetUserEntriesDetailViewModel>> Handle(GetUserEntriesQuery request, CancellationToken cancellationToken)
+        public async Task<PagedViewModel<GetUserEntriesDetailViewModel>> Handle(GetUserEntriesQuery request, CancellationToken cancellationToken)
         {
             var query = entryRepository.AsQueryable();
             if (request.UserId!=null&&request.UserId.HasValue&&request.UserId!=Guid.Empty)

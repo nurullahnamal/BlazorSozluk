@@ -9,7 +9,7 @@ using MediatR;
 
 namespace BlazorSozluk.Api.Application.Features.Queries.GetUserEntries
 {
-    public class GetUserEntriesQuery:BasePagedQuery,IRequest<PagedViewModal<GetUserEntriesDetailViewModel>>
+    public class GetUserEntriesQuery:BasePagedQuery,IRequest<PagedViewModel<GetUserEntriesDetailViewModel>>
     {
 
         public Guid? UserId { get; set; }

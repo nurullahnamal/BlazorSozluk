@@ -10,7 +10,7 @@ namespace BlazorSozluk.Common.Infrastructure.Extensions
 {
     public static class PagingExtensions
     {
-        public static async Task<PagedViewModal<T>> GetPaged<T>(this IQueryable<T> query,
+        public static async Task<PagedViewModel<T>> GetPaged<T>(this IQueryable<T> query,
                                                                 int currentPage,
                                                                 int pageSize) where T : class
 
@@ -20,7 +20,7 @@ namespace BlazorSozluk.Common.Infrastructure.Extensions
 
             Page paging = new(currentPage, pageSize, count);
             var data = await query.Skip(paging.Skip).Take(paging.PageSize).AsNoTracking().ToListAsync();
-            var result = new PagedViewModal<T>(data, paging);
+            var result = new PagedViewModel<T>(data, paging);
             return result;
         }
     }                                                                       
