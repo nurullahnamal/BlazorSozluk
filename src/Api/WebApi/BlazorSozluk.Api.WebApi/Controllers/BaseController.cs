@@ -1,14 +1,12 @@
-﻿using System.Security.Claims;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
-namespace BlazorSozluk.Api.WebApi.Controllers
+namespace BlazorSozluk.Api.WebApi.Controllers;
+[Route("Api/[controller]")]
+[ApiController]
+public class BaseController : ControllerBase
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class BaseController : ControllerBase
-    {
-        public Guid? UserId => Guid.NewGuid(); //(HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
-
-    }
+    public Guid? UserId=>new (HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+   
 }
